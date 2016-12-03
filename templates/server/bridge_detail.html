@@ -1,0 +1,153 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block script %}
+    <script language="javascript" type="text/javascript">
+
+	setInterval(function () {
+            var myImageElement = document.getElementById('condition{{ bridge.pk }}');
+		var bridgeindex = {{ bridge.pk }}-1
+		var bridgeindexstr = bridgeindex.toString()
+		urladdress = '/condition/?pk='+bridgeindexstr
+	$.ajax({
+    	url: urladdress ,
+    	type: 'get', 
+    	success: function(condition) {
+	myImageElement.src = '{% static "" %}'+condition+'.png';
+    	},
+   	 failure: function(data) { 
+       	 alert('Got an error dude');
+    	}
+	});
+
+        }, 100);
+        setInterval(function () {
+            var myImageElement = document.getElementById('signature');
+            myImageElement.src = '{% static "" %}{{ object.number }}/BridgeSignature.png?rand=' + Math.random();
+        }, 100);
+
+
+        setInterval(function () {
+            var myImageElement = document.getElementById('envelope');
+	    var str = myImageElement.src;
+            var res = str.charAt(68);
+            myImageElement.src = '{% static "" %}{{ object.number }}/Girder'+ res +'Signature.png?rand=' + Math.random();
+        }, 100);
+	
+
+        function Girder1() {
+            var tgt = document.getElementsByName('envelope')[0];
+            tgt.src = '{% static "" %}{{ object.number }}/Girder1Signature.png';
+        }
+
+        function Girder2() {
+            var tgt = document.getElementsByName('envelope')[0];
+            tgt.src = '{% static "" %}{{ object.number }}/Girder2Signature.png';
+        }
+
+        function Girder3() {
+            var tgt = document.getElementsByName('envelope')[0];
+            tgt.src = '{% static "" %}{{ object.number }}/Girder3Signature.png';
+        }
+
+        function Girder4() {
+            var tgt = document.getElementsByName('envelope')[0];
+            tgt.src = '{% static "" %}{{ object.number }}/Girder4Signature.png';
+        }
+
+        function Girder5() {
+            var tgt = document.getElementsByName('envelope')[0];
+            tgt.src = '{% static "" %}{{ object.number }}/Girder5Signature.png';
+        }
+
+        function Girder6() {
+            var tgt = document.getElementsByName('envelope')[0];
+            tgt.src = '{% static "" %}{{ object.number }}/Girder6Signature.png';
+        }
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+          <div class="container">
+              <h1 class="display-3">{{ object.name }}</h1>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2"><strong>Town:</strong></div>
+                    <div class="col-md-10">{{ object.town }}, {{ object.state }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2"><strong>Bridge Number:</strong></div>
+                    <div class="col-md-10">{{ object.number }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2"><strong>Built Year:</strong></div>
+                    <div class="col-md-10">{{ object.year }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2"><strong>Last Inspection Date:</strong></div>
+                    <div class="col-md-10">{{ object.inspection }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2"><strong>Bridge Condition:</strong></div>
+                    <div class="col-md-10"><img class="middle" src="{% static "" %}{{ bridge.conditions }}.png" alt="condition not available" style="width:20px;height:20px;" id="condition"></div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <a href="{% url 'bridge_list' %}">
+                    <button class='btn btn-info'>
+                        Return to list
+                    </button>
+                </a>
+            </div>
+          {% if user.is_staff %}
+            <div class="col-md-1">
+                <a href="{% url 'bridge_update' bridge.pk %}">
+                    <button class='btn btn-info'>
+                        Update
+                    </button>
+                </a>
+            </div>
+          {% endif %}
+
+          </div>
+    </div>
+
+    <!-- add analysis below /-->
+    <div class="container">
+
+
+
+        <div class="row">
+
+            <div class="col-md-6"><strong>Bridge Signature:</strong>
+
+            <img class="middle" src="{% static "" %}{{ object.number }}/BridgeSignature.png" alt="condition not available" style="width:500px;height:500px;" id='signature'>
+            </div>
+              
+            <div class="col-md-6"><strong>Girder Signature Envelope:</strong>
+            <div class="btn-group">
+                <button onClick="Girder1();" type="button" class="btn btn-primary">Girder 1</button>
+                <button onClick="Girder2();" type="button" class="btn btn-primary">Girder 2</button>
+                <button onClick="Girder3();" type="button" class="btn btn-primary">Girder 3</button>
+                <button onClick="Girder4();" type="button" class="btn btn-primary">Girder 4</button>
+                <button onClick="Girder5();" type="button" class="btn btn-primary">Girder 5</button>
+                <button onClick="Girder6();" type="button" class="btn btn-primary">Girder 6</button>
+            </div>
+            
+
+
+            <img class="middle" src="{% static "" %}{{ object.number }}/Girder1Signature.png" alt="condition not available" style="width:500px;height:500px;" id='envelope' name="envelope">
+            </div>
+            
+        </div>
+
+    </div>
+{% endblock %}

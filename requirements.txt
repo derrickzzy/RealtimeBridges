@@ -1,0 +1,7 @@
+django
+django-crispy-forms
+Pillow
+numpy
+matplotlib
+wfastcgi
+twilio

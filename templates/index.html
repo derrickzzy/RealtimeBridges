@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block script %}
+    <script language="javascript" type="text/javascript">
+	{% for bridge in object_list %}
+
+        setInterval(function () {
+            var myImageElement = document.getElementById('condition{{ bridge.pk }}');
+		var bridgeindex = {{ bridge.pk }}-1
+		var bridgeindexstr = bridgeindex.toString()
+		urladdress = '/condition/?pk='+bridgeindexstr
+	$.ajax({
+    	url: urladdress ,
+    	type: 'get', 
+    	success: function(condition) {
+	myImageElement.src = '{% static "" %}'+condition+'.png';
+    	},
+   	 failure: function(data) { 
+       	 alert('Got an error dude');
+    	}
+	});
+
+        }, 1000);
+	{% endfor %}
+
+    </script>
+
+{% endblock %}
+{% block content %}
+
+	
+    {% if user.is_authenticated %}
+        <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-3">Real-time Bridge Monitoring</h1>
+            <p> This is demonstrate of Real-time Bridge Structural Health Monitoring Prototype.
+                Bridge strain data was collected and cleaned at computer on site.
+                The data was transferred to the cloud computing server and get processed by statistical model.
+                Structural damage index was calculated based on the coming in data.
+                Engineers can get access the results and data from the website.</p>
+            <p><a class="btn btn-primary btn-lg" href="http://engineering.tufts.edu/cee/shm/default.asp" role="button">Learn more &raquo;</a></p>
+          </div>
+        </div>
+
+        <div class="container">
+      <!-- Example row of columns -->
+            <div class="row">
+                {% for bridge in object_list %}
+                    <div class="col-xs-6 col-lg-4">
+                        <a href="{% url 'bridge_detail' bridge.pk %}">
+                            <h2>{{ bridge.name }}</h2>
+                        </a>
+                        <p><img src="{{ bridge.photo.url }}" class="img-rounded" alt="Picture of {{ bridge.name }} not available" width="304" height="236"></p>
+                      <p>Bridge Condition: <img class="middle" src="{% static "" %}{{ bridge.conditions }}.png" alt="condition not available" style=";width:20px;height:20px;" id="condition{{ bridge.pk }}"></p>
+                      <p><a class="btn btn-secondary" href="{% url 'bridge_detail' bridge.pk %}" role="button">View details &raquo;</a></p>
+                    </div><!--/span-->
+                {% endfor %}
+            </div><!--/row-->
+        </div>
+    {% else %}
+        <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-3">Real-time Bridge Monitoring</h1>
+            <p>This is demonstrate of Real-time Bridge Structural Health Monitoring Prototype.
+                Bridge strain data was collected and cleaned at computer on site.
+                The data was transferred to the cloud computing server and get processed by statistical model.
+                Structural damage index was calculated based on the coming in data.
+                Engineers can get access the results and data from the website.</p>
+            <p><a class="btn btn-primary btn-lg" href="http://engineering.tufts.edu/cee/shm/default.asp" role="button">Learn more &raquo;</a></p>
+          </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

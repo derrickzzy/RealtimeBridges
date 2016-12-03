@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% for bridge in object_list %}
+                <div class="col-sm-4">
+                    <a href="{% url 'bridge_detail' bridge.pk %}">
+                        {{ bridge.name }}
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{% url 'bridge_detail' bridge.pk %}">
+                        <img class="middle" src="{% static "" %}{{ bridge.conditions }}.png" alt="condition not available" style=";width:20px;height:20px;">
+                    </a>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <a href="{% url 'index' %}" class="btn btn-info">
+                    Grid View
+                </a>
+            </div>
+            {% if user.is_staff %}
+            <div class="col-md-10">
+                <a href="{% url 'bridge_create' %}" class="btn btn-info">
+                    Log New Bridge
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}

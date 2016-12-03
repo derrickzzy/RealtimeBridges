@@ -14,6 +14,11 @@
     <InterpreterId>{b312e458-00bc-44d3-86ca-3962ed8d98f1}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
     <UseIISExpress>true</UseIISExpress>
+    <DjangoSettingsModule>RealtimeBridge.settings</DjangoSettingsModule>
+    <PythonDebugWebServerCommandArguments>runserver --noreload --settings $(DjangoSettingsModule) 8000 $(CommandLineArguments)</PythonDebugWebServerCommandArguments>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -119,7 +124,6 @@
     <Content Include="templates\email.html" />
     <Content Include="templates\index.html" />
     <Content Include="templates\layout.html" />
-    <Content Include="templates\report.html" />
     <Content Include="templates\server\bridge_detail.html" />
     <Content Include="templates\server\bridge_form.html" />
     <Content Include="templates\server\bridge_list.html" />
@@ -138,7 +142,6 @@
     <Compile Include="server\bridge.py" />
     <Compile Include="server\call.py" />
     <Compile Include="server\forms.py" />
-    <Compile Include="server\MakePDF.py" />
     <Compile Include="server\models.py" />
     <Compile Include="server\Process.py" />
     <Compile Include="server\tests.py" />

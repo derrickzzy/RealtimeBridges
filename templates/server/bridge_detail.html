@@ -5,34 +5,34 @@
     <script language="javascript" type="text/javascript">
 
 	setInterval(function () {
-            var myImageElement = document.getElementById('condition{{ bridge.pk }}');
-		var bridgeindex = {{ bridge.pk }}-1
-		var bridgeindexstr = bridgeindex.toString()
-		urladdress = '/condition/?pk='+bridgeindexstr
-	$.ajax({
-    	url: urladdress ,
-    	type: 'get', 
-    	success: function(condition) {
-	myImageElement.src = '{% static "" %}'+condition+'.png';
-    	},
-   	 failure: function(data) { 
-       	 alert('Got an error dude');
-    	}
-	});
+        var myImageElement = document.getElementById('condition{{ bridge.pk }}');
+		var bridgeindex = {{ bridge.pk }}-1;
+		var bridgeindexstr = bridgeindex.toString();
+		urladdress = '/condition/?pk='+bridgeindexstr;
+	    $.ajax({
+    	    url: urladdress ,
+    	    type: 'get', 
+    	    success: function(condition) {
+	            myImageElement.src = '{% static "" %}'+condition+'.png';
+    	        },
+   	        failure: function(data) {
+                alert('Got an error dude');
+    	        }
+	        });
+        }, 1000);
 
-        }, 100);
-        setInterval(function () {
-            var myImageElement = document.getElementById('signature');
-            myImageElement.src = '{% static "" %}{{ object.number }}/BridgeSignature.png?rand=' + Math.random();
-        }, 100);
+    setInterval(function () {
+        var myImageElement = document.getElementById('signature');
+        myImageElement.src = '{% static "" %}{{ object.number }}/BridgeSignature.png?rand=' + Math.random();
+    }, 1000);
 
 
-        setInterval(function () {
-            var myImageElement = document.getElementById('envelope');
-	    var str = myImageElement.src;
-            var res = str.charAt(68);
-            myImageElement.src = '{% static "" %}{{ object.number }}/Girder'+ res +'Signature.png?rand=' + Math.random();
-        }, 100);
+    setInterval(function () {
+        var myImageElement = document.getElementById('envelope');
+	var str = myImageElement.src;
+        var res = str.charAt(str.indexOf("Signature")-1);
+        myImageElement.src = '{% static "" %}{{ object.number }}/Girder'+ res +'Signature.png?rand=' + Math.random();
+    }, 1000);
 	
 
         function Girder1() {

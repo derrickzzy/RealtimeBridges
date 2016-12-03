@@ -36,7 +36,7 @@ def processevent(bridgenumber,directory):
         print "count number of events -------------------------"
         print count
         if count >= 500:
-            DI = damageindex(datadir)
+            DI = round(damageindex(datadir),2)
             print "DI analysis complete -------------------------"
             foo = bridgesignature(bridgenumber,directory,datadir)
             print "signature analysis complete -------------------------"
@@ -47,11 +47,11 @@ def processevent(bridgenumber,directory):
                 obj.conditions = 'g'
             else:
                 if DI < 0.5:
-                    msg_condition = "yellow.\nPlease plan to inspect."
+                    msg_condition = "Yellow"
                     obj.conditions = 'y'
                 else:
                     obj.conditions = 'r'
-                    msg_condition = "red.\n\tPlease inspect immediately.\n\n"
+                    msg_condition = "Red"
                     #make alert call
                     #call()
                     print 'make call complete----------------------------'
@@ -62,7 +62,7 @@ def processevent(bridgenumber,directory):
                 MakePDF.pdf(obj,msg_condition, DI)
                 """
                 # send email
-                send_simple_message(msg_condition,bridgenumber)
+                send_simple_message(obj,msg_condition,DI)
                 
                 obj.save()
 
@@ -202,12 +202,12 @@ def bridgesignature(bridgenumber,directory,datadir):
 
     return 0
 
-def send_simple_message(msg_condition,bridgenumber):
-    rendered = render_to_string('email.html', {'bridgenumber': 'bridgenumber','msg_condition': 'msg_condition'})
+def send_simple_message(obj,msg_condition,DI):
+    rendered = render_to_string('email.html', {'bnum': obj.number,'bloc':obj.town+', '+obj.state, 'bcondition':msg_condition,'bDI':DI,'bpk':obj.pk })
     return requests.post(
         "https://api.mailgun.net/v3/sandbox2abc6eaeb72a4c12876535d6fdb20703.mailgun.org/messages",
         auth=("api", "key-5c74fcc384b1b7f01bcc94f28fd107b6"),
         data={"from": "Mailgun Sandbox <postmaster@sandbox2abc6eaeb72a4c12876535d6fdb20703.mailgun.org>",
               "to": "derrickzhao <zhiyong.zhao@tufts.edu>",
               "subject": "Real-time Bridge Monitoring Alert",
-              "html":endered})
+              "html":rendered})

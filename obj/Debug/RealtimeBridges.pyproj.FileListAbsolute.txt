@@ -1,0 +1,15 @@
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\bin\Microsoft.PythonTools.WebRole.dll
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\attach_server.py
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\visualstudio_py_debugger.py
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\visualstudio_py_repl.py
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\visualstudio_py_util.py
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\__init__.py
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\__main__.py
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\bin\AzureSetup.cfg
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\bin\Microsoft.PythonTools.AzureSetup.exe
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\bin\Microsoft.PythonTools.AzureSetup.exe.config
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\bin\wfastcgi.py
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\deployment-updated-orig-prefix.txt
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\ptvs_virtualenv_proxy.py
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\web.config
+C:\Users\derri\OneDrive\Documents\Visual Studio 2015\Projects\RealtimeBridges\obj\Debug\web.debug.config

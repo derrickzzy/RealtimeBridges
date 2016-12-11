@@ -1,0 +1,16 @@
+BASE_URI
+recordings
+date
+create_mock_json
+test_get
+raises
+Recording
+AUTH
+ACCOUNT_SID
+RE_SID
+patch
+test_delete_list
+test_delete_instance
+assert_true
+Recordings
+assert_equal

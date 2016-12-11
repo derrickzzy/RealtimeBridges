@@ -1,0 +1,10 @@
+itertools
+scipy
+__all__
+NumpyVersion
+SphericalVoronoi
+np
+numpy
+project_to_sphere
+calc_circumcenters
+HAS_NUMPY_VEC_DET

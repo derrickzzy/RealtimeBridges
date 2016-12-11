@@ -1,7 +1,0 @@
-PROXY_TYPE_SOCKS4
-PROXY_TYPE_SOCKS5
-_hush_pyflakes
-httplib2
-socks
-Connection
-PROXY_TYPE_HTTP

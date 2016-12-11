@@ -1,7 +1,0 @@
-PROXY_TYPE_SOCKS4
-PROXY_TYPE_SOCKS5
-httplib2
-json
-parse_qs
-PROXY_TYPE_HTTP
-socks

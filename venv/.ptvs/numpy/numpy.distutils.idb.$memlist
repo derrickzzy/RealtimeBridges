@@ -1,7 +1,6 @@
 print_function
 FormatError
 system_info
-NoOptionError
 division
 parse_flags
 extension
@@ -17,7 +16,6 @@ exec_command
 __config__
 files
 lib2def
-RawConfigParser
 parse_variables
 cpuinfo
 read_config

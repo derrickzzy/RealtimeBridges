@@ -1,8 +1,0 @@
-AuthorizedConnectApps
-patch
-AuthorizedConnectApp
-AuthorizedConnectAppTest
-with_statement
-Mock
-assert_equal
-unittest

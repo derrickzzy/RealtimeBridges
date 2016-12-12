@@ -1,9 +1,0 @@
-patch
-BASE_URI
-AUTH
-create_mock_json
-VoiceCountries
-VoiceTest
-VoiceNumbers
-assert_equal
-unittest

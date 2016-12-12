@@ -1,8 +1,0 @@
-patch
-assert_equal
-create_mock_json
-MessagingCountriesTest
-MessagingCountries
-BASE_URI
-AUTH
-unittest
